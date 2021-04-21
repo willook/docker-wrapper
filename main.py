@@ -1,6 +1,7 @@
 import numpy as np
 from docker_wrapper import DockerizedEnv
 
+
 # option 1, if you use several projects in workspace
 volume_path = "/home/willook/workspace"
 node_path = "docker-wrapper/atari_node.py"
@@ -24,5 +25,3 @@ for i in range(5):
     print("done", done)
     print("info", info)
     print()
-    
-    

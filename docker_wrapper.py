@@ -1,11 +1,12 @@
 import os
-import socket
 import pickle
 
 import zmq
 import docker
 from multiprocessing import Queue
 from threading import Thread
+
+
 class DockerExecutor(Thread):
     def __init__(self, volume_path:str, node_path:str, queue:Queue):
         '''
@@ -49,8 +50,7 @@ class DockerExecutor(Thread):
     
     def __del__(self):
         self.container.kill()
-        
-        
+
 
 class Coordinator():
     def __init__(self, ip:str, port:int = 5555):
@@ -66,7 +66,7 @@ class Coordinator():
         returns = pickle.loads(recv_packet)
         return returns
         
-# docker container: docker run -it --network=keai --volume /home/willook/workspace:/workspace realbx:latest
+
 class DockerizedEnv():
     def __init__(self, volume_path:str, node_path:str):
         # initialize docker container
@@ -85,6 +85,3 @@ class DockerizedEnv():
 
     def step(self, action):
         return self.coord.send_command_get_returns(command="step", args = (action,))
-        
-        
-    

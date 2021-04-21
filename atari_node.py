@@ -2,9 +2,9 @@ import zmq
 import gym
 import pickle
 
+
 ''' Define your environment '''
 env = gym.make('Breakout-v0')
-
 
 
 context = zmq.Context()
